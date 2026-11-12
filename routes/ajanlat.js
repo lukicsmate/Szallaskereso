@@ -10,11 +10,14 @@ ajanlat.get("/", async (req, res) => {
     const ej = req.query.ej;
     const fo = req.query.fo;
 
-    const sql = `SELECT szallasok.id as szallas_id ,szallasok.nev as szallas_nev, szallasok.csillag as csillag, varosok.nev AS varos, szallasok.ar as ar,varosok.orszag as orszag
+    const sql = `SELECT szallasok.id as szallas_id ,szallasok.nev as szallas_nev, szallasok.csillag as csillag, ? as ej,
+    varosok.nev AS varos, (szallasok.ar * ? * ?) as ejFoAr,varosok.orszag as orszag
      FROM szallasok
       JOIN varosok ON szallasok.varos_id = varosok.id
-      WHERE varosok.nev = ? AND szallasok.ar <= ? AND szallasok.max_fo >= ?`;
-    const [rows] = await db.query(sql, [varos, ej, fo]);
+      WHERE varosok.nev = ?
+      `;
+    const [rows] = await db.query(sql,[ej,fo,ej,varos]);
+
     res.json(rows);
 
 })

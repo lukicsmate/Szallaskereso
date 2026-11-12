@@ -1,4 +1,3 @@
-import db from "./data/db.js";
 import express from "express";
 import mysql from "mysql2/promise";
 import szallasok from "./routes/szallasok.js";
