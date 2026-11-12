@@ -7,7 +7,7 @@ orszag.use(express.json());
 
 
 orszag.get("/", async (req, res) => {
-    const sql = `SELECT varosok.orszag AS orszag_nev, COUNT(szallasok.id) AS szallasok_szama, AVG(szallasok.ertekeles) AS atlag_ertekeles
+    const sql = `SELECT varosok.orszag AS orszag, COUNT(varosok.id) AS varosDb, COUNT(szallasok.id) as szallasDB,AVG(szallasok.ertekeles) AS atlagErtekeles
      FROM varosok
      JOIN szallasok ON varosok.id = szallasok.varos_id 
      GROUP BY varosok.orszag`;

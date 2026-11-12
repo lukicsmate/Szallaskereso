@@ -8,7 +8,7 @@ varos.use(express.json());
 varos.get("/", async (req, res) => {
     const minSzallas = req.query.minSzallas;
     if (!minSzallas) {
-        const sql = `SELECT varosok.nev AS varos_nev,varosok.orszag AS orszag,COUNT(szallasok.id) AS szallasok_szama,
+        const sql = `SELECT varosok.id,varosok.nev AS nev,varosok.orszag AS orszag,COUNT(szallasok.id) AS szallasDB,
         AVG(szallasok.ar) AS atlag_ar,MIN(szallasok.ar) AS legolcsobb_szallas
         FROM varosok 
         JOIN szallasok ON varosok.id = szallasok.varos_id 
@@ -19,7 +19,7 @@ varos.get("/", async (req, res) => {
     } 
     else 
     {
-        const sql = `SELECT varosok.nev AS varos_nev,varosok.orszag AS orszag,COUNT(szallasok.id) AS szallasok_szama,
+        const sql = `SELECT varosok.id,varosok.nev AS nev,varosok.orszag AS orszag,COUNT(szallasok.id) AS szallasDB,
         AVG(szallasok.ar) AS atlag_ar,MIN(szallasok.ar) AS legolcsobb_szallas
         FROM varosok 
         JOIN szallasok ON varosok.id = szallasok.varos_id 

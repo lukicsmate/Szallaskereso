@@ -18,7 +18,7 @@ szallasok.get("/", async (req, res) => {
     if (6 < minCsillag || minCsillag < 0) {
         return res.status(400).json({ error: "A minCsillag paraméternek 1 és 5 közötti számot kell megadni." });
     }
-    const sql = `SELECT *, varosok.nev AS varos FROM szallasok JOIN varosok ON szallasok.varos_id = varosok.id ORDER BY ar ASC`;
+    const sql = `SELECT * FROM szallasok JOIN varosok ON szallasok.varos_id = varosok.id ORDER BY ar ASC`;
     const [rows] = await db.query(sql);
 
     console.log(rows);
