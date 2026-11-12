@@ -1,4 +1,4 @@
-import db from "./db.js";
+import db from "../data/db.js";
 import express from "express";
 import mysql from "mysql2/promise";
 

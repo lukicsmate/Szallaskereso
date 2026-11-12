@@ -1,11 +1,11 @@
-import db from "./db.js";
+import db from "./data/db.js";
 import express from "express";
 import mysql from "mysql2/promise";
-import szallasok from "./szallasok.js";
-import szallasokById from "./szallasokById.js";
-import varos from "./varos.js";
-import orszag from "./orszag.js";
-import ajanlat from "./ajanlat.js";
+import szallasok from "./routes/szallasok.js";
+import szallasokById from "./routes/szallasokById.js";
+import varos from "./routes/varos.js";
+import orszag from "./routes/orszag.js";
+import ajanlat from "./routes/ajanlat.js";
 
 const app = express();
 app.use(express.json());
